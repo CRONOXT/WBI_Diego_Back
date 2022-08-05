@@ -1,4 +1,4 @@
-export interface Shoes {
+export class Shoes {
   id?: string;
   name: string;
   mark: string;
