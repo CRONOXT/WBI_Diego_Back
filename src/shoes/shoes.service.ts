@@ -1,25 +1,18 @@
-import { Injectable } from '@nestjs/common';
-import { Shoes } from './interfaces/shoes';
+import { Inject, Injectable } from '@nestjs/common';
+import { CreateBrandDto } from 'src/brand/dto/create-brand.dto';
+import { Brand } from 'src/brand/model/brand';
+import { Shoes } from './model/shoes';
+import { searchRepository } from './shoes.repository';
 @Injectable()
 export class ShoesService {
-  shoe: Shoes[] = [
-    {
-      id: '1',
-      name: 'Shark',
-      mark: 'Adidas',
-      price: 2500,
-    },
-    {
-      id: '2',
-      name: 'Crocs',
-      mark: 'Crocs',
-      price: 1500,
-    },
-  ];
-  getShoes(): Shoes[] {
-    return this.shoe;
+  constructor(
+    @Inject('IBusqueda')
+    private busquedaRepositorio: searchRepository,
+  ) {}
+  async searchshoes(): Promise<Shoes[]> {
+    return await this.busquedaRepositorio.busqueda();
   }
-  getShoe(id): Shoes {
-    return this.shoe.find((Shoes) => Shoes.id === id);
+  async serchforbrand(filtro: CreateBrandDto): Promise<Brand[]> {
+    return await this.busquedaRepositorio.busquedaPorMarca(filtro);
   }
 }

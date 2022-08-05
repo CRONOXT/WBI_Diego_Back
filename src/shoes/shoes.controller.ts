@@ -1,38 +1,20 @@
-import {
-  Controller,
-  Delete,
-  Get,
-  Post,
-  Put,
-  Body,
-  Param,
-} from '@nestjs/common';
+import { Controller, Get, Query } from '@nestjs/common';
+import { CreateBrandDto } from 'src/brand/dto/create-brand.dto';
+import { ResponseToReturn } from 'src/compartida/responsereturn';
 import { CreateShoesDto } from './dto/create-shoes.dto';
 import { ShoesService } from './shoes.service';
-import { Shoes } from './interfaces/shoes';
+
 @Controller('shoes')
 export class ShoesController {
   constructor(private shoesService: ShoesService) {}
 
+  @Get('/todos')
+  async serchshoes() {
+    return ResponseToReturn(await this.shoesService.searchshoes());
+  }
   @Get()
-  getshoes(): Shoes[] {
-    return this.shoesService.getShoes();
-  }
-  @Get(':shoes_id')
-  getshoe(@Param('shoes_id') shoes_id) {
-    return this.shoesService.getShoe(shoes_id);
-  }
-
-  @Post()
-  createshoes(@Body() shoes: CreateShoesDto) {
-    return 'Creando zapatos';
-  }
-  @Put()
-  updateshoes() {
-    return 'Actualizando un zapato';
-  }
-  @Delete()
-  deleteshoes() {
-    return 'Borrando zapatos';
+  async searchshoesforbrand(@Query() brand: CreateBrandDto) {
+    console.log(brand);
+    return ResponseToReturn(await this.shoesService.serchforbrand(brand));
   }
 }
