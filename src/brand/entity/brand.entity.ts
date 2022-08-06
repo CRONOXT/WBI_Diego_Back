@@ -8,4 +8,6 @@ export class brandEntity implements Brand {
   id: string;
   @Column()
   name: string;
+  @OneToMany(() => shoesEntity, (shoes) => shoes.brand)
+  shoes: shoesEntity[];
 }
