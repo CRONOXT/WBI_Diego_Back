@@ -12,9 +12,12 @@ export class ShoesController {
   async serchshoes() {
     return ResponseToReturn(await this.shoesService.searchshoes());
   }
-  @Get()
+  @Get('/brand')
   async searchshoesforbrand(@Query() brand: CreateBrandDto) {
-    console.log(brand);
     return ResponseToReturn(await this.shoesService.serchforbrand(brand));
+  }
+  @Get('/name')
+  async searchshoesforname(@Query() name: CreateShoesDto) {
+    return ResponseToReturn(await this.shoesService.searchforname(name));
   }
 }
