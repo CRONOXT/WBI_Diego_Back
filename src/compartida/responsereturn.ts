@@ -1,3 +1,3 @@
 export const ResponseToReturn = (body: any) => {
-  return { body: body };
+  return { data: body };
 };
