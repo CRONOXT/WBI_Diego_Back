@@ -29,4 +29,7 @@ export class ShoesService {
   async searchfordate(filtro: CreateShoesDto): Promise<Shoes[]> {
     return await this.busquedaRepositorio.busquedaPorFecha(filtro);
   }
+  async searchfordateAsc(): Promise<Shoes[]> {
+    return await this.busquedaRepositorio.busquedaPorFechaAsc();
+  }
 }

@@ -34,6 +34,15 @@ export class searchRepository implements IBusqueda {
       .where('shoes.release_date =:name', { name: `${filtro.name}` })
       .getMany();
   }
+  async busquedaPorFechaAsc(): Promise<Shoes[]> {
+    return await this.shoesRepository
+      .createQueryBuilder('shoes')
+      .leftJoinAndSelect('shoes.model', 'modeles')
+      .leftJoinAndSelect('shoes.brand', 'brandes')
+      .leftJoinAndSelect('shoes.store', 'stores')
+      .orderBy('shoes.release_date', 'DESC')
+      .getMany();
+  }
   async busquedaPorNombre(filtro2: CreateShoesDto): Promise<Shoes[]> {
     return await this.shoesRepository
       .createQueryBuilder('shoes')
