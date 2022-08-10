@@ -34,4 +34,8 @@ export class ShoesController {
   async searchshoesfordate(@Query() name: CreateShoesDto) {
     return ResponseToReturn(await this.shoesService.searchfordate(name));
   }
+  @Get('/date/asc')
+  async searchshoesfordateAsc() {
+    return ResponseToReturn(await this.shoesService.searchfordateAsc());
+  }
 }
