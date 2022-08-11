@@ -75,3 +75,10 @@ Nest is [MIT licensed](LICENSE).
 ##IMPORTANT DATA
 
 Para que se haga mas facil probar la aplicacion, a continuacion se anexara una tabla donde podran ver marcas, modelos, fechas para usarlas:
+
+```bash
+| BRANDS | MODELS | DATES | NAMES | STORES
+| ------------- | ------------- |
+| Contenido de la celda  | Contenido de la celda  |
+| Contenido de la celda  | Contenido de la celda  |
+```
