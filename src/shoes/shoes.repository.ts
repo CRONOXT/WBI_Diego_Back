@@ -22,7 +22,7 @@ export class searchRepository implements IBusqueda {
       .leftJoinAndSelect('shoes.model', 'modeles')
       .leftJoinAndSelect('shoes.brand', 'brandes')
       .leftJoinAndSelect('shoes.store', 'stores')
-      .where('modeles.name =:name', { name: `${filtro.model}` })
+      .where('modeles.name like :name', { name: `%${filtro.model}%` })
       .getMany();
   }
   async busquedaPorFecha(filtro: CreateShoesDto): Promise<Shoes[]> {
@@ -31,7 +31,7 @@ export class searchRepository implements IBusqueda {
       .leftJoinAndSelect('shoes.model', 'modeles')
       .leftJoinAndSelect('shoes.brand', 'brandes')
       .leftJoinAndSelect('shoes.store', 'stores')
-      .where('shoes.release_date =:name', { name: `${filtro.name}` })
+      .where('shoes.release_date like :name', { name: `%${filtro.name}%` })
       .getMany();
   }
   async busquedaPorFechaAsc(): Promise<Shoes[]> {
@@ -40,7 +40,7 @@ export class searchRepository implements IBusqueda {
       .leftJoinAndSelect('shoes.model', 'modeles')
       .leftJoinAndSelect('shoes.brand', 'brandes')
       .leftJoinAndSelect('shoes.store', 'stores')
-      .orderBy('shoes.release_date', 'DESC')
+      .orderBy('shoes.release_date ', 'DESC')
       .getMany();
   }
   async busquedaPorNombre(filtro2: CreateShoesDto): Promise<Shoes[]> {
@@ -49,7 +49,7 @@ export class searchRepository implements IBusqueda {
       .leftJoinAndSelect('shoes.brand', 'brandes')
       .leftJoinAndSelect('shoes.model', 'models')
       .leftJoinAndSelect('shoes.store', 'stores')
-      .where('shoes.name=:name', { name: `${filtro2.name}` })
+      .where('shoes.name like :name', { name: `%${filtro2.name}%` })
       .getMany();
   }
 
@@ -59,7 +59,7 @@ export class searchRepository implements IBusqueda {
       .leftJoinAndSelect('shoes.brand', 'brandes')
       .leftJoinAndSelect('shoes.model', 'models')
       .leftJoinAndSelect('shoes.store', 'stores')
-      .where('brandes.name =:name', { name: `${filtro.brand}` })
+      .where('brandes.name like :name', { name: `%${filtro.brand}%` })
       .getMany();
   }
 
@@ -69,7 +69,7 @@ export class searchRepository implements IBusqueda {
       .leftJoinAndSelect('shoes.brand', 'brandes')
       .leftJoinAndSelect('shoes.model', 'models')
       .leftJoinAndSelect('shoes.store', 'stores')
-      .where('stores.name =:name', { name: `${filtro.store}` })
+      .where('stores.name like :name', { name: `%${filtro.store}%` })
       .getMany();
   }
 
