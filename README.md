@@ -76,9 +76,8 @@ Nest is [MIT licensed](LICENSE).
 
 Para que se haga mas facil probar la aplicacion, a continuacion se anexara una tabla donde podran ver marcas, modelos, fechas para usarlas:
 
-
-| BRANDS | MODELS | DATES | NAMES | STORES |
-| ------------- | ------------- | ------------- | ------------- | ------------- |
-| Contenido de la celda  | Contenido de la celda  | S  | D  | D |
-| Contenido de la celda  | Contenido de la celda  | D  | D  | D |
-
+```bash
+| BRANDS | MODELS | DATES | NAMES | STORES
+| ------------- | ------------- |
+| NIKE, ADIDAS, PUMA, UMBRO, KAPPA, CROCS, NEW BALANCES, FILA, REEBOK, TIMBERLAND, SKEACHERS  | TACONES, DEPORTIVO, BOTAS, CHANCLA, CASUAL  | 2015-06-18,2022-06-19,2022-06-18,2021-05-19, ETC| SNEAKERS, CROCS, MOXIE, BOMPY, SMASH, CARINA, ETC | CITY MARKET, SAMBIL, LIDER, LIDO, RECREO, REYMI SPORT, CALZADOS DISCOVERY
+```
