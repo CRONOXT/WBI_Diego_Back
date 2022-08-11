@@ -15,7 +15,8 @@ export class searchRepository implements IBusqueda {
     @InjectRepository(shoesEntity)
     private shoesRepository: Repository<shoesEntity>,
   ) {}
-
+  //FUNCION QUE BUSCA TODOS LOS ZAPATOS SEGUN EL MODELO ENVIADO, USANDO LA ETIQUETA LIKE
+  //PARA PODER BUSCAR POR LETRA
   async busquedaPorModelo(filtro: CreateShoesModelDto): Promise<Shoes[]> {
     return await this.shoesRepository
       .createQueryBuilder('shoes')
@@ -25,6 +26,7 @@ export class searchRepository implements IBusqueda {
       .where('modeles.name like :name', { name: `%${filtro.model}%` })
       .getMany();
   }
+  //FUNCION QUE BUSCA TODOS LOS ZAPATOS SEGUN EL UNA FECHA INSERTADA
   async busquedaPorFecha(filtro: CreateShoesDto): Promise<Shoes[]> {
     return await this.shoesRepository
       .createQueryBuilder('shoes')
@@ -34,6 +36,8 @@ export class searchRepository implements IBusqueda {
       .where('shoes.release_date like :name', { name: `%${filtro.name}%` })
       .getMany();
   }
+  //FUNCION QUE BUSCA TODOS LOS ZAPATOS Y LOS ORDENA
+  //DESDE LA FECHA DE LANZAMIENTO MAS RECIENTE HASTA LA ULTIMA
   async busquedaPorFechaAsc(): Promise<Shoes[]> {
     return await this.shoesRepository
       .createQueryBuilder('shoes')
@@ -43,6 +47,8 @@ export class searchRepository implements IBusqueda {
       .orderBy('shoes.release_date ', 'DESC')
       .getMany();
   }
+  //FUNCION QUE BUSCA TODOS LOS ZAPATOS SEGUN SU NOMBRE, USANDO LA ETIQUETA LIKE
+  //PARA PODER BUSCAR POR LETRA
   async busquedaPorNombre(filtro2: CreateShoesDto): Promise<Shoes[]> {
     return await this.shoesRepository
       .createQueryBuilder('shoes')
@@ -52,7 +58,8 @@ export class searchRepository implements IBusqueda {
       .where('shoes.name like :name', { name: `%${filtro2.name}%` })
       .getMany();
   }
-
+  //FUNCION QUE BUSCA TODOS LOS ZAPATOS SEGUN SU MARCA, USANDO LA ETIQUETA LIKE
+  //PARA PODER BUSCAR POR LETRA
   async busquedaPorMarca(filtro: CreateBrandDto): Promise<Shoes[]> {
     return await this.shoesRepository
       .createQueryBuilder('shoes')
@@ -62,7 +69,8 @@ export class searchRepository implements IBusqueda {
       .where('brandes.name like :name', { name: `%${filtro.brand}%` })
       .getMany();
   }
-
+  //FUNCION QUE BUSCA TODOS LOS ZAPATOS SEGUN ELLA TEINDA DE DONDE PROBIENEN,
+  //USANDO LA ETIQUETA LIKE PARA PODER BUSCAR POR LETRA
   async busquedaPorTienda(filtro: CreateStoreDto): Promise<Shoes[]> {
     return await this.shoesRepository
       .createQueryBuilder('shoes')
@@ -72,7 +80,7 @@ export class searchRepository implements IBusqueda {
       .where('stores.name like :name', { name: `%${filtro.store}%` })
       .getMany();
   }
-
+  //BUSQUEDA DE TODOS LOS ZAPATOS
   async busqueda(): Promise<Shoes[]> {
     return await this.shoesRepository.find({
       relations: ['brand', 'model', 'store'],

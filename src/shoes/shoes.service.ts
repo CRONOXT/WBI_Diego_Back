@@ -11,6 +11,9 @@ export class ShoesService {
     @Inject('IBusqueda')
     private busquedaRepositorio: searchRepository,
   ) {}
+  //LLAMADOS A LA FUNCIONES DEFINIDAR EN SEARCHREPOSITORY
+  //SE USO EL PATRON REPOSITORIO  PARA NO TENER QUE ALTERAR EL SERVICIO
+  //CADA VEZ QUE SE QUIERA AGREGAR UNA NUEVA BUSQUEDA E CAMBIAR UNA EXISTENTE
   async searchshoes(): Promise<Shoes[]> {
     return await this.busquedaRepositorio.busqueda();
   }
