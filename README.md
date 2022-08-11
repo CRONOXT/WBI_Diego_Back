@@ -77,8 +77,8 @@ Nest is [MIT licensed](LICENSE).
 Para que se haga mas facil probar la aplicacion, a continuacion se anexara una tabla donde podran ver marcas, modelos, fechas para usarlas:
 
 
-| BRANDS | MODELS | DATES | NAMES | STORES
-| ------------- | ------------- |
-| Contenido de la celda  | Contenido de la celda  |
-| Contenido de la celda  | Contenido de la celda  |
+| BRANDS | MODELS | DATES | NAMES | STORES |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| Contenido de la celda  | Contenido de la celda  | S  | D  | D |
+| Contenido de la celda  | Contenido de la celda  | D  | D  | D |
 
